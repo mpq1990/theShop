@@ -11,7 +11,7 @@ import {
   Form,
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import { listProductDetails } from '../actions/productActions';
+import { listProductDetails, deleteProduct } from '../actions/productActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
