@@ -42,7 +42,6 @@ const ProductListScreen = ({ history, match }) => {
   };
 
   const createProductHandler = () => {
-    console.log('hi');
     dispatch(createProduct());
   };
 
