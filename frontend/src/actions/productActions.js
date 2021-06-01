@@ -18,6 +18,9 @@ import {
   PRODUCT_CREATE_REVIEW_RESET,
   PRODUCT_CREATE_REVIEW_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
+  PRODUCT_TOP_REQUEST,
+  PRODUCT_TOP_FAIL,
+  PRODUCT_TOP_SUCCESS,
 } from '../constants/productConstants';
 
 export const listProducts =
@@ -192,3 +195,19 @@ export const createProductReview =
       });
     }
   };
+
+export const listTopProducts = () => async (disptach) => {
+  try {
+    disptach({ type: PRODUCT_TOP_REQUEST });
+    const { data } = await axios.get(`/api/products/top`);
+    disptach({ type: PRODUCT_TOP_SUCCESS, payload: data });
+  } catch (error) {
+    disptach({
+      type: PRODUCT_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
